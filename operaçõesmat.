@@ -1,0 +1,70 @@
+function executar(fn, num1 = 0, num2 = 0) {
+    if (typeof fn === 'function') {
+      console.log(fn(num1, num2));
+    } else {
+      console.log('O primeiro argumento deve ser uma função.');
+    }
+  }
+  
+  function somar(a, b) {
+    return a + b;
+  }
+  
+  function subtrair(a, b) {
+    return a - b;
+  }
+  
+  function multi(a, b) {
+    return a * b;
+  }
+  
+  while (true) {
+    const userInput = prompt("Escolha uma opção:\n1 - Verificar par/ímpar\n2 - Realizar operações simples\n3 - Encerrar");
+  
+    if (userInput === "3") {
+      console.log("Encerrando o programa...");
+      break;
+    }
+  
+    switch (userInput) {
+      case "1":
+        const numberInput = prompt("Digite um número:");
+        if (!isNaN(numberInput)) {
+          const number = parseFloat(numberInput);
+          if (number % 2 === 0) {
+            console.log(`O número ${number} é par.`);
+          } else {
+            console.log(`O número ${number} é ímpar.`);
+          }
+        } else {
+          console.log(`O valor '${numberInput}' é uma string.`);
+        }
+        break;
+  
+      case "2":
+        const operationInput = prompt("Escolha uma operação:\n1 - Somar\n2 - Subtrair\n3 - Multiplicar");
+        const num1 = parseFloat(prompt("Digite o primeiro número:"));
+        const num2 = parseFloat(prompt("Digite o segundo número:"));
+  
+        switch (operationInput) {
+          case "1":
+            executar(somar, num1, num2);
+            break;
+          case "2":
+            executar(subtrair, num1, num2);
+            break;
+          case "3":
+            executar(multi, num1, num2);
+            break;
+          default:
+            console.log("Operação inválida.");
+            break;
+        }
+        break;
+  
+      default:
+        console.log("Opção inválida.");
+        break;
+    }
+  }
+  
